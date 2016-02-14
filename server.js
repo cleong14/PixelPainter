@@ -14,9 +14,24 @@ app.use(express.static(__dirname + '/public'));
 app.use(morgan('dev'));
 
 app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json());
 
 app.get('/', function (req, res) {
   res.render('index');
+});
+
+app.get('/drawings/:id', function(req, res) {
+
+});
+
+app.post('/drawings', function (req, res) {
+  var newDrawing = new Drawing({name: req.body.name});
+  newDrawing.save();
+  res.send('Painting saved!');
+});
+
+app.put('/drawings/:id', function (req, res) {
+
 });
 
 var db = mongoose.connection;

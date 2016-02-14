@@ -29,6 +29,7 @@ $(function () {
   var currentCell;
   var targetCell;
   var targetColor;
+  var painter;
   // basic color array
   var basicColors = ['red', 'yellow', 'blue', 'green', 'orange', 'purple', 'black', 'gray', 'magenta'];
 
@@ -48,10 +49,17 @@ $(function () {
     // creates clear button
     drawButton('clearButton', 'Clear');
 
+    // creates save button
+    drawButton('saveButton', 'Save');
+
     // fill selector grid with colors
     baseColors(1);
 
     addColor();
+
+    erase();
+
+    clear();
   }
 
   // accept an array of colors to generate our swatches
@@ -137,7 +145,7 @@ $(function () {
 
   // add click to select color and paint color in paintGrid
   function addColor () {
-    var painter = $('#paintGrid');
+    painter = $('#paintGrid');
 
     painter.click(function (event) {
       var target = $(event.target);
@@ -152,8 +160,15 @@ $(function () {
     var eraserButton = $('#eraseButton');
 
     eraserButton.click(function (event) {
-      console.log(event);
-      targetColor.css('background-color', '#ffffff');
+      targetColor = '#ffffff';
+    });
+  }
+
+  function clear () {
+    var clearButton = $('#clearButton');
+
+    clearButton.click(function (event) {
+      $('#paintGrid .cell').css('background-color', '#ffffff');
     });
   }
 });
