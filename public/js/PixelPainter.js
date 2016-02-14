@@ -60,6 +60,8 @@ $(function () {
     erase();
 
     clear();
+
+    save();
   }
 
   // accept an array of colors to generate our swatches
@@ -169,6 +171,31 @@ $(function () {
 
     clearButton.click(function (event) {
       $('#paintGrid .cell').css('background-color', '#ffffff');
+    });
+  }
+
+  function save () {
+    var saveButton = $('#saveButton');
+
+    saveButton.click(function (event) {
+      var saveInfo = $('#paintGrid .cell').map(function (index, cell) {
+        // console.log(cell.style);
+        return cell.style['background-color'];
+      });
+
+      $.ajax({
+        type: 'POST',
+        url: '/save',
+        data: JSON.stringify({ painting: saveInfo}),
+        dataType: 'json',
+        contentType: 'application/json',
+        success: function (data) {
+          console.log(data);
+        }
+      });
+
+      // $.post('/save', saveInfo);
+      console.log('saving...');
     });
   }
 });

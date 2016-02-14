@@ -5,7 +5,7 @@ var morgan = require('morgan');
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/pixel-painter');
 
-var drawingSchema = mongoose.Schema({ name: String });
+var drawingSchema = mongoose.Schema({ painting: Object });
 var Drawing = mongoose.model('Drawing', drawingSchema);
 
 var app = express();
@@ -18,6 +18,14 @@ app.use(bodyParser.json());
 
 app.get('/', function (req, res) {
   res.render('index');
+});
+
+app.post('/save', function (req, res) {
+  console.log(req.body.painting);
+  var newDrawing = new Drawing({ painting: req.body.painting });
+  newDrawing.save(function () {
+    res.send('yay');
+  });
 });
 
 app.get('/drawings/:id', function(req, res) {
