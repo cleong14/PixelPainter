@@ -194,7 +194,6 @@ $(function () {
         }
       });
 
-      // $.post('/save', saveInfo);
       console.log('saving...');
     });
   }

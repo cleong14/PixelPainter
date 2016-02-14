@@ -21,7 +21,6 @@ app.get('/', function (req, res) {
 });
 
 app.post('/save', function (req, res) {
-  console.log(req.body.painting);
   var newDrawing = new Drawing({ painting: req.body.painting });
   newDrawing.save(function () {
     res.send('yay');
