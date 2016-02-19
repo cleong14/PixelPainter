@@ -14,17 +14,17 @@ body
     //- colorGrid
     - var colorId = 0;
     #colorGrid.container
-      - for (var column = 0; column < 3; column++)
+      - for (var column = 0; column < x; column++)
           div.row
-            - for (var row = 0; row < 3; row++)
+            - for (var row = 0; row < y; row++)
               - colorId++
                 div(id="colorCell#{colorId}" class="cell")
 
     - var paintId = 0;
     #paintGrid.container
-      - for (var column = 0; column < 5; column++)
+      - for (var column = 0; column < a; column++)
           div.row
-            - for (var row = 0; row < 5; row++)
+            - for (var row = 0; row < b; row++)
               - paintId++
                 div(id="paintCell#{paintId}" class="cell")
 
@@ -35,4 +35,5 @@ body
       button(id="clearButton" class="button" name="button") Clear
 
       button(id="saveButton" class="button" name="button") Save
-  //- script(src="/js/PixelPainter.js")
+
+  script(src="/js/PixelPainter.js")

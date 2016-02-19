@@ -24,7 +24,7 @@ app.get('/', function (req, res) {
 });
 
 app.get('/canvas',  function (req, res) {
-  res.render('canvas');
+  res.render('canvas', {x: 3, y: 3, a: 5, b: 5});
 });
 
 app.post('/save', function (req, res) {
