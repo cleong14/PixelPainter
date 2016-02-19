@@ -3,9 +3,36 @@ html(lang="en")
 head
   meta(charset="UTF-8")
   script(type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js")
-  link(href="css/PixelPainter.css" rel="stylesheet" media="screen")
+  link(href="/css/PixelPainter.css" rel="stylesheet" media="screen")
   title Pixel Painter
 body
   h1 Pixel Painter
+  
   div(id="pixelPainter")
-  script(src="js/PixelPainter.js")
+
+    //- using '-' before code in jade allows you to use regular javascript
+    //- colorGrid
+    - var colorId = 0;
+    #colorGrid.container
+      - for (var column = 0; column < 3; column++)
+          div.row
+            - for (var row = 0; row < 3; row++)
+              - colorId++
+                div(id="colorCell#{colorId}" class="cell")
+
+    - var paintId = 0;
+    #paintGrid.container
+      - for (var column = 0; column < 5; column++)
+          div.row
+            - for (var row = 0; row < 5; row++)
+              - paintId++
+                div(id="paintCell#{paintId}" class="cell")
+
+    div
+
+      button(id="eraseButton" class="button" name="button") Erase
+
+      button(id="clearButton" class="button" name="button") Clear
+
+      button(id="saveButton" class="button" name="button") Save
+  //- script(src="/js/PixelPainter.js")

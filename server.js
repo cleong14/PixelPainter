@@ -23,6 +23,10 @@ app.get('/', function (req, res) {
   res.render('canvas');
 });
 
+app.get('/canvas',  function (req, res) {
+  res.render('canvas');
+});
+
 app.post('/save', function (req, res) {
   var newPainting = new Painting({ painting: req.body.painting });
   newPainting.save(function () {
