@@ -38,19 +38,19 @@ $(function () {
     var swatches = ['cornflowerblue'];
     // drawSwatches(swatches);
     // creates color selector grid
-    drawGrid(3, 3, 'colorGrid', 1, 'colorCell');
+    // drawGrid(3, 3, 'colorGrid', 1, 'colorCell');
 
     // creates grid to 'paint'
-    drawGrid(5, 5, 'paintGrid', 1, 'paintCell');
+    // drawGrid(5, 5, 'paintGrid', 1, 'paintCell');
 
     // creates 'erase' button
-    drawButton('eraseButton', 'Erase');
+    // drawButton('eraseButton', 'Erase');
 
     // creates clear button
-    drawButton('clearButton', 'Clear');
+    // drawButton('clearButton', 'Clear');
 
     // creates save button
-    drawButton('saveButton', 'Save');
+    // drawButton('saveButton', 'Save');
 
     // fill selector grid with colors
     baseColors(1);
