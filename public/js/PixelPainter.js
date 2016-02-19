@@ -162,7 +162,7 @@ $(function () {
     var eraserButton = $('#eraseButton');
 
     eraserButton.click(function (event) {
-      targetColor = '#ffffff';
+      targetColor = '';
     });
   }
 
@@ -170,7 +170,7 @@ $(function () {
     var clearButton = $('#clearButton');
 
     clearButton.click(function (event) {
-      $('#paintGrid .cell').css('background-color', '#ffffff');
+      $('#paintGrid .cell').css('background-color', '');
     });
   }
 
@@ -178,9 +178,17 @@ $(function () {
     var saveButton = $('#saveButton');
 
     saveButton.click(function (event) {
-      var saveInfo = $('#paintGrid .cell').map(function (index, cell) {
-        // console.log(cell.style);
-        return cell.style['background-color'];
+      var paintCell = $('#paintGrid .cell');
+      var saveInfo = paintCell.map(function (index, cell) {
+
+        if (!cell.style['background-color']) {
+          return;
+        } else {
+          var paintCell = {};
+          // giving paintCell obj key of cell.id with prop cell background-color
+          paintCell[cell.id] = cell.style['background-color'];
+          return paintCell;
+        }
       });
 
       $.ajax({
