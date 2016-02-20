@@ -40,7 +40,15 @@ app.get('/paintings/:id', function(req, res) {
 
   Painting.findOne({ _id: id })
   .then(function (result) {
-    res.render(result);
+
+    var grid = {};
+
+    // for every key thats in result.painting object
+    for (key in result.painting) {
+      // Object.assign basically is taking the grid object and assigning the values from result.painting
+      Object.assign(grid, result.painting[key]);
+    }
+    res.render('painting', {x: 3, y: 3, a: 5, b: 5, result: grid});
   });
 });
 
