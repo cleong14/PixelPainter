@@ -6,7 +6,7 @@ var gridSetup = require('./grid-setup');
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/pixel-painter');
 
-var paintingSchema = mongoose.Schema({ painting: Object });
+var paintingSchema = mongoose.Schema({ "painting": Object, "author": String, "description": String });
 var Painting = mongoose.model('Painting', paintingSchema);
 
 var app = express();
@@ -29,7 +29,7 @@ app.get('/canvas',  function (req, res) {
 });
 
 app.post('/save', function (req, res) {
-  var newPainting = new Painting({ painting: req.body.painting });
+  var newPainting = new Painting({ "painting": req.body.painting, "author": req.body.author, "description": req.body.description });
   newPainting.save(function () {
     res.send('yay');
   });
@@ -41,7 +41,7 @@ app.get('/paintings/:id', function(req, res) {
 
   Painting.findOne({ _id: id })
   .then(function (result) {
-
+    console.log(result.description);
     var grid = {};
 
     // for every key thats in result.painting object
@@ -49,7 +49,7 @@ app.get('/paintings/:id', function(req, res) {
       // Object.assign basically is taking the grid object and assigning the values from result.painting
       Object.assign(grid, result.painting[key]);
     }
-    res.render('painting', {x: gridSetup.colorGrid.width, y: gridSetup.colorGrid.height, a: gridSetup.paintGrid.width, b: gridSetup.paintGrid.height, result: grid});
+    res.render('painting', {x: gridSetup.colorGrid.width, y: gridSetup.colorGrid.height, a: gridSetup.paintGrid.width, b: gridSetup.paintGrid.height, result: grid, author: result.author, description: result.description});
   });
 });
 

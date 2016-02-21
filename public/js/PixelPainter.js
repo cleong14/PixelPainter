@@ -174,6 +174,8 @@ $(function () {
     });
   }
 
+  // var paintInfo = $("form :input");
+
   function save () {
     var saveButton = $('#saveButton');
 
@@ -187,10 +189,12 @@ $(function () {
         return paintCell;
       });
 
+      var paintInfo = $("form :input");
+
       $.ajax({
         type: 'POST',
         url: '/save',
-        data: JSON.stringify({ painting: saveInfo}),
+        data: JSON.stringify({ "painting": saveInfo, "author": paintInfo[0].value, "description": paintInfo[1].value}),
         dataType: 'json',
         contentType: 'application/json',
         success: function (data) {

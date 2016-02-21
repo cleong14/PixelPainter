@@ -28,6 +28,12 @@ body
               - paintId++
                 div(id="paintCell#{paintId}" class="cell" style="background-color: #{result['paintCell' + paintId]}")
                   //- result is an object now so we can use [] notation to place background-color in respect to each paintCell it was saved to previously
+    - console.log(result);
+    h2 By: 
+    p #{author}
+
+    h2 Description:
+    p #{description}
 
     div
 

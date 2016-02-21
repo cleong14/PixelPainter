@@ -28,8 +28,14 @@ body
               - paintId++
                 div(id="paintCell#{paintId}" class="cell")
 
-    div
+    div#paintInfo
+      form(method="POST", action="/save")
+        h2 Author
+        input(type="text", name="author", placeholder="Author's Name")
+        h2 Description
+        textarea(type="text", name="description" placeholder="Brief Description")
 
+    div
       button(id="eraseButton" class="button" name="button") Erase
 
       button(id="clearButton" class="button" name="button") Clear
