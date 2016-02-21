@@ -2,9 +2,21 @@
 html(lang="en")
 head
   meta(charset="UTF-8")
-  title Paintings
+  script(type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js")
+  link(href="/css/listing.css" rel="stylesheet" media="screen")
+  title Your Painting
 body
   ul
-    for val in paintings
-      li
-        a(href="/paintings/#{val._id}")= val._id
+    - for (var i = 0; i < results.length; i++)
+        - console.log(results[i].canvasId);
+        li
+          a(href="/paintings/#{results[i].canvasId}")
+            - var paintId = 0;
+            #paintGrid.container
+              - for (var column = 0; column < a; column++)
+                  div.row
+                    - for (var row = 0; row < b; row++)
+                      - paintId++
+                        div(id="paintCell#{paintId}" class="cell" style="background-color: #{results[i].canvas[paintId - 1]['paintCell' + paintId]}")
+
+  script(src="/js/PixelPainter.js")

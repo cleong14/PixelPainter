@@ -181,14 +181,10 @@ $(function () {
       var paintCell = $('#paintGrid .cell');
       var saveInfo = paintCell.map(function (index, cell) {
 
-        if (!cell.style['background-color']) {
-          return;
-        } else {
-          var paintCell = {};
-          // giving paintCell obj key of cell.id with prop cell background-color
-          paintCell[cell.id] = cell.style['background-color'];
-          return paintCell;
-        }
+        var paintCell = {};
+        // giving paintCell obj key of cell.id with prop cell background-color
+        paintCell[cell.id] = cell.style['background-color'];
+        return paintCell;
       });
 
       $.ajax({
