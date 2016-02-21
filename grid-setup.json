@@ -1,0 +1,11 @@
+{
+  "colorGrid": {
+    "height": 3,
+    "width": 3
+  },
+
+  "paintGrid": {
+    "height": 5,
+    "width": 5
+  }
+}
